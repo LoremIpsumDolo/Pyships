@@ -6,7 +6,7 @@ from app import handler as h, sql_player as sql
 
 
 def check_app_id(application_id):
-	url = 'https://api.worldofwarships.eu/wows/encyclopedia/info/?fields=game_version&'
+	url = 'https://api.worldofwarships.eu/wows/encyclopedia/info/?fields=game_version&application_id='
 	r = requests.get(url + str(application_id))
 	reply = json.loads(r.text)
 
