@@ -1,0 +1,8 @@
+{
+	"game_root": "D:\\World_of_Warships_EU",
+	"replay_dir": "D:\\World_of_Warships_EU\\replays",
+	"replay_file": "D:\\World_of_Warships_EU\\replays\\0.9.12.0\\tempArenaInfo.json",
+	"game_version": "0.9.12.0",
+	"db_version": "0.9.12.0",
+	"database": "app/WoWs.db"
+}

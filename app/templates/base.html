@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{Title}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://kit.fontawesome.com/bac4eff7a3.js" crossorigin="anonymous"></script>
+<!--	<link rel="shortcut icon" src="static/img/favicon.ico">-->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+	<script src="static/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" href="static/style.css">
+	{% block script %} {% endblock %}
+</head>
+<body>
+
+<div class="wrapper">
+
+	<div class="header">
+		<div class="topnav">
+			<a class="topnav-left" id="homeBTN" href="{{ url_for('url_home') }}"><i class="fas fa-home fa-lg"></i></a>
+			<a class="topnav-left" id="chartBTN" href="{{ url_for('url_chart') }}"><i class="fas fa-chart-bar fa-lg"></i></a>
+			<a class="topnav-left" id=" settingsBTN" href="{{ url_for('url_settings') }}"><i class="fas fa-cogs fa-lg"></i></a>
+		</div>
+
+		<div class="statusbar" id="statusbar">
+			{% block statusbar %}
+			{% endblock %}
+		</div>
+	</div>
+
+	<div id="contend" class="contend">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+</div>
+</body>
+</html>

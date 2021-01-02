@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block script %}
+
+<script type=text/javascript src="{{url_for('static', filename='/js/settings.js') }}"></script>
+
+{% endblock %}
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        get_status();
+        get_log();
+    });
+</script>
+
+
+<div class="split">
+
+    {% for field in Field %}
+
+    <button class="accordion">
+        <p1>{{field}}</p1>
+        <br>
+        <p2 id="{{field}}status"></p2>
+    </button>
+
+    <div class="panel">
+        <div class="inputBox">
+
+            <form autocomplete="off">
+                <input type="text" id="{{field}}" placeholder="Path to the main World_of_Warships folder:">
+                <div id="validate_{{field}}Button">
+                    <input class="button" type="button" onclick="validate_{{field}}()" value="validate">
+                </div>
+                <div id="save_{{field}}Button" style="display:none">
+                    <input class="button" type="button" onclick="save_{{field}}()" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+
+    <button class="accordion">
+            <p1>Database</p1>
+                <br>
+            <p2 id="database_status"></p2>
+    </button>
+
+    <div class="panel">
+        <div class="inputBox">
+             <form autocomplete="off">
+                 <div id="update_database_Button">
+                    <input id="database_Button" class="button" type="button" onclick="update_database()" value="UPDATE">
+                 </div>
+             </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
+
+<div class="split" style="padding: 20px">
+    <div class="split_right">
+        <samp id="LogBox">
+
+        </samp>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block statusbar %}
+    <div id="status"></div>
+{% endblock %}

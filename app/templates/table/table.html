@@ -1,0 +1,73 @@
+{% block content %}
+<table class="table">
+
+<script>
+	$(document).ready(function () {
+			$(".tr-main").click(function () {
+				$(this).next(".tr-hidden").toggleClass("vis");
+				$(this).toggleClass("main-vis");
+			});
+		});
+</script>
+
+	<tbody>
+	{% for Row in Rows %}
+		<tr class="tr-main">
+			<td>{{ Row.playerA_name }}</td>
+			<td class="{{ Row.radarA }}">{{ Row.playerA_ship_name }}</td>
+			<td class="center shipclass">
+				<img src="/static/img/{{ Row.playerA_type }}">
+			</td>
+			<td class="normal wr {{ Row.playerA_avgClass }}">{{ Row.playerA_avg }}</td>
+			<td class="normal wr {{ Row.playerB_avgClass }}">{{ Row.playerB_avg }}</td>
+			<td class="normal shipclass">
+				<img src="/static/img/{{ Row.playerB_type }}">
+			</td>
+			<td class="normal name {{ Row.radarB }}">{{ Row.playerB_ship_name }}</td>
+			<td>{{ Row.playerB_name }}</td>
+		</tr>
+		<tr class="tr-hidden">
+			<td>
+				<ul class="no-bullets">
+					<li style="text-align:right">Battles Total :</li>
+					<li style="text-align:right">Winrate Total :</li>
+					<li style="text-align:right">Ship Total :</li>
+					<li style="text-align:right">Winrate Ship :</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="no-bullets">
+					<li style="text-align:left">{{ Row.playerA_TotalBattles }}</li>
+					<li style="text-align:left">{{ Row.playerA_avg }}</li>
+					<li style="text-align:left">{{ Row.playerA_ShipBattles }}</li>
+					<li style="text-align:left">{{ Row.playerA_ShipAvg }}</li>
+				</ul>
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<ul class="no-bullets">
+					<li style="text-align:right">Battles Total :</li>
+					<li style="text-align:right">Winrate Total :</li>
+					<li style="text-align:right">Ship Total :</li>
+					<li style="text-align:right">Winrate Ship :</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="no-bullets">
+					<li style="text-align:left">{{ Row.playerB_TotalBattles }}</li>
+					<li style="text-align:left">{{ Row.playerB_avg }}</li>
+					<li style="text-align:left">{{ Row.playerB_ShipBattles }}</li>
+					<li style="text-align:left">{{ Row.playerB_ShipAvg }}</li>
+				</ul>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+<div id="tableId" style="visibility:hidden">{{ ID }}</div>
+{% endblock %}
