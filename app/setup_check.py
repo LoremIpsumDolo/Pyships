@@ -5,6 +5,16 @@ import requests
 from app import handler as h, sql_player as sql
 
 
+def get_app_versions():
+	r = requests.get('https://raw.githubusercontent.com/LoremIpsumDolo/Pyships/updates/version.json')
+	LatestVersion = json.loads(r.text)['latest version']
+	CurrentVersion = h.open_json('version.json')
+	print(CurrentVersion)
+
+	print('current:', CurrentVersion, '\nlatest:', LatestVersion)
+	return {'current': CurrentVersion, 'latest': LatestVersion}
+
+
 def check_app_id(application_id):
 	url = 'https://api.worldofwarships.eu/wows/encyclopedia/info/?fields=game_version&application_id='
 	r = requests.get(url + str(application_id))
@@ -49,16 +59,18 @@ def check_game_root(game_root):
 
 			print('replay file:', replay_file)
 
+			Versions = get_app_versions()
 			db_version = sql.get_db_version()
 			config = {
-					'game_root'   : game_root,
-					'replay_dir'  : replay_dir,
-					'replay_file' : replay_file,
-					'game_version': version,
-					'db_version'  : db_version,
-					'database'    : 'app/WoWs.db'
+					'game_root'      : game_root,
+					'replay_dir'     : replay_dir,
+					'replay_file'    : replay_file,
+					'game_version'   : version,
+					'db_version'     : db_version,
+					'database'       : 'app/WoWs.db',
+					'CurrentVersion' : Versions['current'],
+					'LatestVersion'  : Versions['latest']
 			}
-
 			return config
 
 		else:
