@@ -58,6 +58,15 @@ class Conf:
 		except:
 			return False
 
+	# @classmethod
+	# def get_app_version(cls):
+	# 	try:
+	# 		f = open_json('version.json')
+	# 		app_version = f['version']
+	# 		return app_version
+	# 	except:
+	# 		return False
+
 	@classmethod
 	def get_replay_dir(cls):
 		try:
