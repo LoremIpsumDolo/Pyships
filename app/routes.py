@@ -19,7 +19,8 @@ def url_base():
 
 @app.route('/home')
 def url_home():
-	return render_template('table/table-wrapper.html')
+	Versions = setup_check.get_app_versions()
+	return render_template('table/table-wrapper.html', app_version=Versions['current'], git_version=Versions['latest'])
 
 
 @app.route('/chart')
