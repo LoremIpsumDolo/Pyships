@@ -9,7 +9,7 @@ application_id = h.Conf.get_application_id()
 
 def get_account_id(player_name):
 	URL_a = 'https://api.worldofwarships.eu/wows/account/list/?'
-	r = requests.get(URL_a + application_id + '&type=exact&search=' +
+	r = requests.get(URL_a + '&application_id=' + application_id + '&type=exact&search=' +
 	                 player_name + '&fields=account_id%2C+nickname')
 	account_id = json.loads(r.text)
 	for data in account_id['data']:
@@ -64,7 +64,7 @@ def parse_logfile(battle_timestamp, replayFile):
 def request_all_playerstats(account_id_list):
 	URL_es = 'https://api.worldofwarships.eu/wows/account/info/?'
 	joined_string = '%2C+'.join(account_id_list)
-	r = requests.get(URL_es + application_id + '&account_id=' + joined_string +
+	r = requests.get(URL_es + '&application_id=' + application_id + '&account_id=' + joined_string +
 	                 '&fields=nickname%2C+statistics.pvp.battles%2C+statistics.pvp.wins')
 	pvp_stats = json.loads(r.text)
 	return pvp_stats
@@ -76,7 +76,7 @@ def request_shipstats(stat, nickname, ParsedLogfile):
 	for field in ParsedLogfile:
 		if field['player_name'] == nickname:
 			ship_id = str(field['ship_id'])
-			ShipURL = (URL_PS + application_id + '&account_id=' + stat +
+			ShipURL = (URL_PS + '&application_id=' + application_id + '&account_id=' + stat +
 			           '&fields=pvp.battles%2C+pvp.wins&ship_id=' + ship_id)
 
 	r = requests.get(ShipURL)
