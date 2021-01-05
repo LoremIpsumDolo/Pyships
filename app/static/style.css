@@ -6,8 +6,7 @@ html {
     border-collapse: collapse;
     display: block;
     font-family: Raleway, sans-serif, Allerta Stencil;
-    /*font-family: Allerta Stencil, sans-serif;*/
-    font-size: 16px;
+    font-size: 1.6vw;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-blend-mode: darken;
@@ -25,7 +24,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     background-color: #212529;
-    opacity: .7
+    opacity: .7;
 }
 
 .contend {
@@ -228,7 +227,8 @@ input[type=text] {
 
 .table {
     border-collapse: collapse;
-    width: 100%
+    width: 100%;
+    font-size: 1rem;
 }
 
 td {
@@ -305,4 +305,11 @@ tr-main:hover {
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
+}
+
+@media only screen and (max-width: 950px) {
+    html {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
 }
