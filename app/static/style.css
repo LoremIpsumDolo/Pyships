@@ -288,10 +288,47 @@ tr-main:hover {
 }
 
 
+:root {
+    --stripe-size: 30px;
+    --color1: #212529;
+    --color2: #2d3135;
+    --duration: 5s;
+}
+
 .radar {
-    background: repeating-linear-gradient(-55deg, #212529, #212529 10px, #2d3135 10px, #2d3135 20px);
+    /*background: repeating-linear-gradient(-55deg, #212529, #212529 10px, #2d3135 10px, #2d3135 20px);*/
+    background: repeating-linear-gradient(
+            45deg,
+            var(--color1) 25%,
+            var(--color1) 50%,
+            var(--color2) 50%,
+            var(--color2) 75%
+    );
+    background-size: var(--stripe-size) var(--stripe-size);
+    animation: stripeBackgroundPosition var(--duration) linear infinite;
+
     border: solid 4px #212529;
-    font-weight: 400;
+    font-weight: 500;
+}
+
+@keyframes stripeTransform {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(var(--stripe-size) * -1));
+    }
+}
+
+@keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: calc(var(--stripe-size) * -1) 0;
+    }
 }
 
 
