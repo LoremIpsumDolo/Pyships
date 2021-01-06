@@ -42,7 +42,7 @@ def url_table():
 	Title = 'Table'
 	Rows = sql.build_table(sql.get_last_date())
 	print(Rows[1]['data'])
-	return render_template('table/table.html', Title=Title, Rows=Rows[1]['data'], ID=Rows[0]['date'])
+	return render_template('table/table.html', Title=Title, Rows=Rows[1]['data'], ID=Rows[0])
 
 
 #########################################
