@@ -7,6 +7,7 @@ html {
     display: block;
     font-family: Raleway, sans-serif, Allerta Stencil;
     font-size: 1.6vw;
+    max-font-size: 16px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-blend-mode: darken;
@@ -210,6 +211,14 @@ p3 {
     border: solid 1px green
 }
 
+.setting-green {
+    color: green
+}
+
+.setting-red {
+    color: red
+}
+
 input[type=text] {
     box-sizing: border-box;
     outline: 0;
@@ -225,6 +234,16 @@ input[type=text] {
     color: #fff
 }
 
+#database_Button {
+    margin-left: 38%;
+    margin-right: 38%;
+    margin-bottom: 20px;
+}
+
+
+/*      TABLE       */
+
+
 .table {
     border-collapse: collapse;
     width: 100%;
@@ -239,13 +258,6 @@ td {
     cursor: default
 }
 
-.setting-green {
-    color: green
-}
-
-.setting-red {
-    color: red
-}
 
 .green {
     color: green;
@@ -287,6 +299,20 @@ tr-main:hover {
     overflow: hidden;
 }
 
+.team_avg {
+    border-collapse: collapse;
+    width: 50%;
+    font-size: 1rem;
+}
+
+#team_A_avg {
+    text-align: center;
+}
+
+#team_B_avg {
+    text-align: center;
+}
+
 
 :root {
     --stripe-size: 30px;
@@ -311,6 +337,20 @@ tr-main:hover {
     font-weight: 500;
 }
 
+/*####################*/
+/*      CHART         */
+/*####################*/
+.C_Container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+}
+
+/*####################*/
+/*     ANIMATIONS     */
+/*####################*/
+
+
 @keyframes stripeTransform {
     0% {
         transform: translateX(0);
@@ -332,17 +372,24 @@ tr-main:hover {
 }
 
 
-#database_Button {
-    margin-left: 38%;
-    margin-right: 38%;
-    margin-bottom: 20px;
+@keyframes pulse {
+    0% {
+        color: #adb5bd;
+    }
+    50% {
+        color: #f2f9ff;
+    }
+    100% {
+        color: #adb5bd;
+    }
 }
 
-.C_Container {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3%;
+.td, .mvp {
+    animation-name: pulse;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
+
 
 @media only screen and (max-width: 950px) {
     html {
@@ -350,3 +397,5 @@ tr-main:hover {
         padding-right: 1%;
     }
 }
+
+
