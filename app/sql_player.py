@@ -234,10 +234,46 @@ def get_final_results(battle_timestamp, relation):
 	return result
 
 
+def get_avg_team_score(values):
+	sum_num = 0
+	for i in values:
+		j = i['TotalAvg_f'].strip('%')
+		sum_num = sum_num + float(j)
+
+	avg = sum_num / len(values)
+	return round(avg, 2)
+
+
+def get_mvp(values):
+	mvp_score = float(0)
+	mvp = ""
+	for i in values:
+		score = float(i['TotalAvg_f'].strip('%'))
+		# player = i['player_name']
+		if score >= mvp_score:
+			mvp_score = score
+			mvp = i['player_name']
+		else:
+			pass
+
+	return mvp
+
+
 def build_table(LocalDate):
 	resultA = get_final_results(LocalDate, 'A')
+	resultA_avg = get_avg_team_score(resultA)
+	team_A_mvp = get_mvp(resultA)
+	print('team_A_mvp:', team_A_mvp)
+	print('Team A avg :', resultA_avg)
+
 	resultB = get_final_results(LocalDate, 'B')
+	resultB_avg = get_avg_team_score(resultB)
+	team_B_mvp = get_mvp(resultB)
+	print('team_B_mvp:', team_B_mvp)
+	print('Team B avg :', resultB_avg)
+
 	Rows = []
+
 	for x in range(len(resultA)):
 
 		if resultA[x]['TotalAvg_f'] <= resultB[x]['TotalAvg_f']:
@@ -272,7 +308,11 @@ def build_table(LocalDate):
 		Rows.append(row)
 	Export = [
 			{
-					'date': LocalDate
+					'date'      : LocalDate,
+					'team_A_avg': resultA_avg,
+					'team_A_mvp': str(team_A_mvp),
+					'team_B_avg': resultB_avg,
+					'team_B_mvp': str(team_B_mvp)
 			},
 			{
 					'data': Rows
